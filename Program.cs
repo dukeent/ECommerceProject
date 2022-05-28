@@ -1,3 +1,5 @@
+global using System.ComponentModel.DataAnnotations.Schema;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
