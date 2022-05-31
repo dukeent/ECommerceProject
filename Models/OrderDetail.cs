@@ -9,9 +9,6 @@ namespace ECommerceProject.Models
         public int Quantity { get; set; }
         public double TotalPrice { get; set; }
         
-        [ForeignKey("OrderDetail_Order")]
-        public int OrderId { get; set; }
-        public Order Order { get; set; } = null!;
 
         [ForeignKey("OrderDetail_Product")]
         public int ProductId { get; set; }
