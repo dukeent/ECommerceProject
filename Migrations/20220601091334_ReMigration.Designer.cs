@@ -12,8 +12,8 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace ECommerceProject.Migrations
 {
     [DbContext(typeof(ECommerceProjectContext))]
-    [Migration("20220531111655_NewMigration")]
-    partial class NewMigration
+    [Migration("20220601091334_ReMigration")]
+    partial class ReMigration
     {
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
@@ -35,17 +35,10 @@ namespace ECommerceProject.Migrations
                     b.Property<DateTime>("CreatedAt")
                         .HasColumnType("datetime2");
 
-                    b.Property<int>("CustomerId")
-                        .HasColumnType("int");
-
-                    b.Property<int>("OrderDetailId")
+                    b.Property<int>("UserId")
                         .HasColumnType("int");
 
                     b.HasKey("OrderId");
-
-                    b.HasIndex("CustomerId");
-
-                    b.HasIndex("OrderDetailId");
 
                     b.ToTable("Order");
                 });
@@ -58,6 +51,9 @@ namespace ECommerceProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("OrderDetailId"), 1L, 1);
 
+                    b.Property<int>("OrderId")
+                        .HasColumnType("int");
+
                     b.Property<int>("ProductId")
                         .HasColumnType("int");
 
@@ -68,8 +64,6 @@ namespace ECommerceProject.Migrations
                         .HasColumnType("float");
 
                     b.HasKey("OrderDetailId");
-
-                    b.HasIndex("ProductId");
 
                     b.ToTable("OrderDetail");
                 });
@@ -92,12 +86,7 @@ namespace ECommerceProject.Migrations
                     b.Property<int>("Quantity")
                         .HasColumnType("int");
 
-                    b.Property<int>("ReviewId")
-                        .HasColumnType("int");
-
                     b.HasKey("ProductId");
-
-                    b.HasIndex("ReviewId");
 
                     b.ToTable("Product");
                 });
@@ -110,7 +99,7 @@ namespace ECommerceProject.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ReviewId"), 1L, 1);
 
-                    b.Property<int>("CustomerId")
+                    b.Property<int>("ProductId")
                         .HasColumnType("int");
 
                     b.Property<string>("ReviewComment")
@@ -120,9 +109,10 @@ namespace ECommerceProject.Migrations
                     b.Property<int>("ReviewStar")
                         .HasColumnType("int");
 
-                    b.HasKey("ReviewId");
+                    b.Property<int>("UserId")
+                        .HasColumnType("int");
 
-                    b.HasIndex("CustomerId");
+                    b.HasKey("ReviewId");
 
                     b.ToTable("Review");
                 });
@@ -179,7 +169,7 @@ namespace ECommerceProject.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("RoleId")
+                    b.Property<int>("RoleID")
                         .HasColumnType("int");
 
                     b.Property<string>("Username")
@@ -188,72 +178,7 @@ namespace ECommerceProject.Migrations
 
                     b.HasKey("UserId");
 
-                    b.HasIndex("RoleId");
-
                     b.ToTable("User");
-                });
-
-            modelBuilder.Entity("ECommerceProject.Models.Order", b =>
-                {
-                    b.HasOne("ECommerceProject.Models.User", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.HasOne("ECommerceProject.Models.OrderDetail", "OrderDetail")
-                        .WithMany()
-                        .HasForeignKey("OrderDetailId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-
-                    b.Navigation("OrderDetail");
-                });
-
-            modelBuilder.Entity("ECommerceProject.Models.OrderDetail", b =>
-                {
-                    b.HasOne("ECommerceProject.Models.Product", "Product")
-                        .WithMany()
-                        .HasForeignKey("ProductId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Product");
-                });
-
-            modelBuilder.Entity("ECommerceProject.Models.Product", b =>
-                {
-                    b.HasOne("ECommerceProject.Models.Review", "Review")
-                        .WithMany()
-                        .HasForeignKey("ReviewId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Review");
-                });
-
-            modelBuilder.Entity("ECommerceProject.Models.Review", b =>
-                {
-                    b.HasOne("ECommerceProject.Models.User", "Customer")
-                        .WithMany()
-                        .HasForeignKey("CustomerId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Customer");
-                });
-
-            modelBuilder.Entity("ECommerceProject.Models.User", b =>
-                {
-                    b.HasOne("ECommerceProject.Models.Role", "Role")
-                        .WithMany()
-                        .HasForeignKey("RoleId")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
-
-                    b.Navigation("Role");
                 });
 #pragma warning restore 612, 618
         }

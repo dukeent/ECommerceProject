@@ -14,17 +14,16 @@ namespace ECommerceProject.Data
         {
         }
 
-        public DbSet<ECommerceProject.Models.User>? User { get; set; }
+        public DbSet<ECommerceProject.Models.Order>? Order { get; set; }
+
+        public DbSet<ECommerceProject.Models.OrderDetail>? OrderDetail { get; set; }
 
         public DbSet<ECommerceProject.Models.Product>? Product { get; set; }
 
         public DbSet<ECommerceProject.Models.Review>? Review { get; set; }
 
-        public DbSet<ECommerceProject.Models.Order>? Order { get; set; }
-
-        public DbSet<ECommerceProject.Models.OrderDetail>? OrderDetail { get; set; }
-
         public DbSet<ECommerceProject.Models.Role>? Role { get; set; }
 
+        public DbSet<ECommerceProject.Models.User>? User { get; set; }
     }
 }
