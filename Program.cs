@@ -1,4 +1,11 @@
+global using System.ComponentModel.DataAnnotations;
+global using System.ComponentModel.DataAnnotations.Schema;
+using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ECommerceProject.Data;
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddDbContext<ECommerceProjectContext>(options =>
+    options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceProjectContext") ?? throw new InvalidOperationException("Connection string 'ECommerceProjectContext' not found.")));
 
 // Add services to the container.
 
