@@ -9,6 +9,10 @@ namespace ECommerceProject.Models
 
         public DateTime CreatedAt { get; set; }
 
+        [ForeignKey("Order_OrderDetail")]
+        public int OrderDetailId { get; set; }
+        public OrderDetail OrderDetail { get; set; } = null!;
+
         [ForeignKey("Order_Customer")]
         public int CustomerId { get; set; }
         public User Customer { get; set; }
