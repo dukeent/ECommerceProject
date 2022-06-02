@@ -1,4 +1,5 @@
 ﻿using ECommerceProject.Data;
+using ECommerceProject.Interfaces.IConfiguration;
 using ECommerceProject.Interfaces.IReponsitories;
 using ECommerceProject.Interfaces.IServices;
 using ECommerceProject.Models;
@@ -9,100 +10,48 @@ namespace ECommerceProject.Services
 {
     public class UserService : IUserService
     {
-        private ECommerceProjectContext context;
-
-        IUserReponsitory UserReponsitory;
-        public UserService(ECommerceProjectContext context)
+        IUnitOfWork unitOfWork;
+        IUserRepository userRepository;
+        
+        public UserService(IUnitOfWork _unitOfWork, IUserRepository _userRepository)
         {
-            this.context = context;
+            unitOfWork = _unitOfWork;
+            userRepository = _userRepository;
         }
 
-
-        public Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<bool> DeleteUser(int id)
         {
-            if (context.User == null)
-            {
-                //return NotFound();
-            }
-            return UserReponsitory.GetUser();
+            await unitOfWork.Users.DeleteUser(id);
+            await unitOfWork.CompleteAsync();
+            return true;
         }
 
-        public async Task<ActionResult<User>> GetUser(int id)
+        public async Task<IEnumerable<User>> GetAll()
         {
-            if (context.User == null)
-            {
-                //return NotFound();
-            }
-            User user = await context.User.FindAsync(id);
-
-            if (user == null)
-            {
-                //return NotFound();
-            }
-            return await UserReponsitory.GetUser(id);
+            return await unitOfWork.Users.GetAll();
         }
 
-        public void PutUser(int id, User user)
+        public Task<User> GetById(int id)
         {
-            if (id != user.UserId)
-            {
-                //return BadRequest();
-            }
-
-            context.Entry(user).State = EntityState.Modified;
-            try
-            {
-                UserReponsitory.PutUser(id, user);
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    //return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-            // return NoContent();
-        }
-        public void PostUser(User user)
-        {
-            if (context.User == null)
-            {
-                //return Problem("Entity set 'ECommerceProjectContext.User'  is null.");
-            }
-            UserReponsitory.PostUser(user);
-            //return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            return unitOfWork.Users.GetById(id);
         }
 
-        public ECommerceProjectContext Get_context()
+        public async Task<bool> PostUser(User user)
         {
-            return context;
+            if (user != null)
+            {
+                await unitOfWork.Users.PostUser(user);
+                await unitOfWork.CompleteAsync();
+                return true;
+            }
+            return false;
         }
 
-        public void DeleteUser(int id)
-        {
-            if (context.User == null)
-            {
-                //return NotFound();
-            }
-            User user = context.User.Find(id);
-            if (user == null)
-            {
-                //return NotFound();
-            }
-            UserReponsitory.DeleteUser(id);
-        }
-        private bool UserExists(int id)
-        {
-            return (context.User?.Any(e => e.UserId == id)).GetValueOrDefault();
-        }
-
-        Task IUserService.DeleteUser(int id)
+        public Task<bool> PutUser(int id, User user)
         {
             throw new NotImplementedException();
         }
+
+
     }
 }

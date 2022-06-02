@@ -25,16 +25,18 @@ namespace ECommerceProject.Controllers
         }
 
         [HttpGet]
-        public Task<ActionResult<IEnumerable<User>>> GetUser()
+        public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-            return UserService.GetUser();
+            var res = await UserService.GetAll();
+            return Ok(res);
         }
 
         // GET: api/TestUsers/5
         [HttpGet("{id}")]
-        public Task<ActionResult<User>> GetUser(int id)
+        public async Task<ActionResult<User>> GetUser(int id)
         {
-            return UserService.GetUser(id);
+            var user = await UserService.GetById(id);
+            return Ok(user);
         }
 
         // PUT: api/TestUsers/5
