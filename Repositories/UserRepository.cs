@@ -1,6 +1,6 @@
 ﻿namespace ECommerceProject.Repositories
 {
-    public class RoleReponsitory
+    public class UserRepository
     {
     }
 }
