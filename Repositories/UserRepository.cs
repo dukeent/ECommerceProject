@@ -1,13 +1,11 @@
 ﻿using ECommerceProject.Data;
 using ECommerceProject.Interfaces.IRepositories;
-using ECommerceProject.Interfaces.IServices;
 using ECommerceProject.Models;
-using ECommerceProject.Repositories;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ECommerceProject.Services
+namespace ECommerceProject.Repositories
 {
-    public class UserService
+    public class UserRepository
     {
     }
 }

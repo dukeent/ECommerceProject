@@ -1,6 +1,6 @@
-﻿namespace ECommerceProject.Interfaces.IReponsitories
+﻿namespace ECommerceProject.Interfaces.IRepositories
 {
-    public interface IGenericReponsitory<T> where T : class
+    public interface IGenericRepository<T> where T : class
     {
         Task<IEnumerable<T>> GetAll();
 

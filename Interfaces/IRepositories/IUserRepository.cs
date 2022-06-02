@@ -1,9 +1,9 @@
 ﻿using ECommerceProject.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ECommerceProject.Interfaces.IReponsitories
+namespace ECommerceProject.Interfaces.IRepositories
 {
-    public interface IUserReponsitory
+    public interface IUserRepository
     {
         Task<ActionResult<IEnumerable<User>>> GetUser();
         Task<ActionResult<User>> GetUser(int id);

@@ -1,6 +1,6 @@
 ﻿namespace ECommerceProject.Repositories
 {
-    public class OrderDetailReponsitory
+    public class OrderDetailRepository
     {
     }
 }
