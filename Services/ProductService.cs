@@ -1,5 +1,5 @@
 ﻿using ECommerceProject.Interfaces.IConfiguration;
-using ECommerceProject.Interfaces.IReponsitories;
+using ECommerceProject.Interfaces.IRepositories;
 using ECommerceProject.Interfaces.IServices;
 using ECommerceProject.Models;
 
@@ -38,10 +38,9 @@ namespace ECommerceProject.Services
             return await unitOfWork.Products.GetAll();
         }
 
-        public async Task<Product> GetById(int id)
+        public Task<Product> GetById(int id)
         {
-            var result = await unitOfWork.Products.GetById(id);
-            return result;
+            throw new NotImplementedException();
         }
     }
 }

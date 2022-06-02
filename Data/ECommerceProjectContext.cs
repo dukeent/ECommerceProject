@@ -4,6 +4,7 @@ using System.Linq;
 using System.Threading.Tasks;
 using Microsoft.EntityFrameworkCore;
 using ECommerceProject.Models;
+using ECommerceProject.Services;
 
 namespace ECommerceProject.Data
 {
@@ -23,6 +24,7 @@ namespace ECommerceProject.Data
         public DbSet<ECommerceProject.Models.Review>? Review { get; set; }
 
         public DbSet<ECommerceProject.Models.Role>? Role { get; set; }
+
         public DbSet<ECommerceProject.Models.User>? User { get; set; }
 
 
