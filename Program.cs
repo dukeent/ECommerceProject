@@ -2,12 +2,11 @@ global using System.ComponentModel.DataAnnotations;
 global using System.ComponentModel.DataAnnotations.Schema;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
-using ECommerceProject.Data;
-using ECommerceProject.Interfaces.IConfiguration;
-using ECommerceProject.Interfaces.IReponsitories;
-using ECommerceProject.Interfaces.IServices;
-using ECommerceProject.Repositories;
-using ECommerceProject.Services;
+global using ECommerceProject.Data;
+global using ECommerceProject.Interfaces.IReponsitories;
+global using ECommerceProject.Interfaces.IServices;
+global using ECommerceProject.Repositories;
+global using ECommerceProject.Services;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ECommerceProjectContext>(options =>
@@ -20,13 +19,8 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
-//Adding the Unit of work to the DI container 
-builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
-
-builder.Services.AddScoped<IProductRepository, ProductRepository>();
-builder.Services.AddScoped<IProductService, ProductService>();
-
+builder.Services.AddScoped<IUserReponsitory, UserReponsitory>();
+builder.Services.AddScoped<IUserService, UserService>();
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

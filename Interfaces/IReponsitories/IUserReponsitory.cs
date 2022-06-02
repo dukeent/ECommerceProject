@@ -1,15 +1,15 @@
 ﻿using ECommerceProject.Models;
 using Microsoft.AspNetCore.Mvc;
 
-namespace ECommerceProject.Interfaces.IServices
+namespace ECommerceProject.Interfaces.IReponsitories
 {
-    public interface IUserService
+    public interface IUserReponsitory
     {
         Task<ActionResult<IEnumerable<User>>> GetUser();
         Task<ActionResult<User>> GetUser(int id);
         void PutUser(int id, User user);
         void PostUser(User user);
-        Task DeleteUser(int id);
+        void DeleteUser(int id);
 
     }
 }

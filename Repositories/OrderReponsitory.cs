@@ -1,6 +1,6 @@
 ﻿namespace ECommerceProject.Repositories
 {
-    public class ReviewRepository
+    public class OrderReponsitory
     {
     }
 }
