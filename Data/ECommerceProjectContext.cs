@@ -23,6 +23,7 @@ namespace ECommerceProject.Data
         public DbSet<ECommerceProject.Models.Review>? Review { get; set; }
 
         public DbSet<ECommerceProject.Models.Role>? Role { get; set; }
+        public DbSet<ECommerceProject.Models.User>? User { get; set; }
 
 
     }
