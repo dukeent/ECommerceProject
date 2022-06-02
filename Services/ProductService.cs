@@ -38,9 +38,10 @@ namespace ECommerceProject.Services
             return await unitOfWork.Products.GetAll();
         }
 
-        public Task<Product> GetById(int id)
+        public async Task<Product> GetById(int id)
         {
-            throw new NotImplementedException();
+            var result = await unitOfWork.Products.GetById(id);
+            return result;
         }
     }
 }

@@ -36,22 +36,21 @@ namespace ECommerceProject.Controllers
         }
 
         // GET: api/TestProducts/5
-        //[HttpGet("{id}")]
-        //public async Task<ActionResult<Product>> GetProduct(int id)
-        //{
-        //  if (_context.Product == null)
-        //  {
-        //      return NotFound();
-        //  }
-        //    var product = await _context.Product.FindAsync(id);
+        [HttpGet("{id}")]
+        public async Task<ActionResult<Product>> GetProduct(int id)
+        {
+            //if (_context.Product == null)
+            //{
+            //    return NotFound();
+            //}
+            //var product = await _context.Product.FindAsync(id);
 
-        //    if (product == null)
-        //    {
-        //        return NotFound();
-        //    }
-
-        //    return product;
-        //}
+            //if (product == null)
+            //{
+            //    return NotFound();
+            //}
+            return await productService.GetById(id);
+        }
 
         // PUT: api/TestProducts/5
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
