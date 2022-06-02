@@ -7,6 +7,8 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore;
 using ECommerceProject.Data;
 using ECommerceProject.Models;
+using ECommerceProject.Services;
+using ECommerceProject.Interfaces.IServices;
 
 namespace ECommerceProject.Controllers
 {
@@ -14,111 +16,48 @@ namespace ECommerceProject.Controllers
     [ApiController]
     public class TestUsersController : ControllerBase
     {
-        private readonly ECommerceProjectContext _context;
 
-        public TestUsersController(ECommerceProjectContext context)
+        private readonly IUserService UserService;
+
+        public TestUsersController(IUserService userService)
         {
-            _context = context;
+            UserService = userService;
         }
 
-        // GET: api/TestUsers
         [HttpGet]
-        public async Task<ActionResult<IEnumerable<User>>> GetUser()
+        public Task<ActionResult<IEnumerable<User>>> GetUser()
         {
-          if (_context.User == null)
-          {
-              return NotFound();
-          }
-            return await _context.User.ToListAsync();
+            return UserService.GetUser();
         }
 
         // GET: api/TestUsers/5
         [HttpGet("{id}")]
-        public async Task<ActionResult<User>> GetUser(int id)
+        public Task<ActionResult<User>> GetUser(int id)
         {
-          if (_context.User == null)
-          {
-              return NotFound();
-          }
-            var user = await _context.User.FindAsync(id);
-
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            return user;
+            return UserService.GetUser(id);
         }
 
         // PUT: api/TestUsers/5
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
+
         [HttpPut("{id}")]
-        public async Task<IActionResult> PutUser(int id, User user)
+        public void PutUser(int id, User user)
         {
-            if (id != user.UserId)
-            {
-                return BadRequest();
-            }
-
-            _context.Entry(user).State = EntityState.Modified;
-
-            try
-            {
-                await _context.SaveChangesAsync();
-            }
-            catch (DbUpdateConcurrencyException)
-            {
-                if (!UserExists(id))
-                {
-                    return NotFound();
-                }
-                else
-                {
-                    throw;
-                }
-            }
-
-            return NoContent();
+            UserService.PutUser(id, user);
         }
 
         // POST: api/TestUsers
-        // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
-        public async Task<ActionResult<User>> PostUser(User user)
+        public void PostUser(User user)
         {
-          if (_context.User == null)
-          {
-              return Problem("Entity set 'ECommerceProjectContext.User'  is null.");
-          }
-            _context.User.Add(user);
-            await _context.SaveChangesAsync();
-
-            return CreatedAtAction("GetUser", new { id = user.UserId }, user);
+            UserService.PostUser(user);
         }
 
         // DELETE: api/TestUsers/5
         [HttpDelete("{id}")]
-        public async Task<IActionResult> DeleteUser(int id)
+        public void DeleteUser(int id)
         {
-            if (_context.User == null)
-            {
-                return NotFound();
-            }
-            var user = await _context.User.FindAsync(id);
-            if (user == null)
-            {
-                return NotFound();
-            }
-
-            _context.User.Remove(user);
-            await _context.SaveChangesAsync();
-
-            return NoContent();
+            UserService.DeleteUser(id);
         }
 
-        private bool UserExists(int id)
-        {
-            return (_context.User?.Any(e => e.UserId == id)).GetValueOrDefault();
-        }
     }
 }
