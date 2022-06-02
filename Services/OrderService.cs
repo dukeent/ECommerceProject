@@ -1,6 +1,6 @@
 ﻿namespace ECommerceProject.Services
 {
-    public class IServiceTest
+    public class OrderService
     {
     }
 }
