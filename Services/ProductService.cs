@@ -45,14 +45,6 @@ namespace ECommerceProject.Services
 
         public async Task<bool> Update(int id, Product entity)
         {
-            //var existed = await unitOfWork.Products.CheckExisted(id);
-            //if (existed == true)
-            //{
-            //    unitOfWork.Products.Update(entity);
-            //    await unitOfWork.CompleteAsync();
-            //    return true;
-            //}
-            //return false;
             unitOfWork.Products.Update(entity);
             await unitOfWork.CompleteAsync();
             return true;

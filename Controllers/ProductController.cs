@@ -16,7 +16,7 @@ namespace ECommerceProject.Controllers
             productService = _productService;
         }
 
-        // GET: api/TestProducts
+        // GET: api/Product
         [HttpGet]
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
@@ -24,7 +24,7 @@ namespace ECommerceProject.Controllers
             return Ok(result);
         }
 
-        // POST: api/TestProducts
+        // POST: api/Product
         // To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPost]
         public async Task<ActionResult<Product>> PostProduct(Product product)
@@ -34,7 +34,7 @@ namespace ECommerceProject.Controllers
         }
 
 
-        //GET: api/TestProducts/5
+        //GET: api/Product/5
         [HttpGet("{id}")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
@@ -42,7 +42,7 @@ namespace ECommerceProject.Controllers
             return Ok(result);
         }
 
-        //PUT: api/TestProducts/5
+        //PUT: api/Product/5
         //To protect from overposting attacks, see https://go.microsoft.com/fwlink/?linkid=2123754
         [HttpPut("{id}")]
         public async Task<IActionResult> PutProduct(int id, Product product)
@@ -52,7 +52,7 @@ namespace ECommerceProject.Controllers
             return NoContent();
         }
 
-        // DELETE: api/TestProducts/5
+        // DELETE: api/Product/5
         [HttpDelete("{id}")]
         public async Task<IActionResult> DeleteProduct(int id)
         {

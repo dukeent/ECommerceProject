@@ -1,6 +1,8 @@
-﻿namespace ECommerceProject.Interfaces.IRepositories
+﻿using ECommerceProject.Models;
+
+namespace ECommerceProject.Interfaces.IRepositories
 {
-    public interface IRoleRepository
+    public interface IRoleRepository : IGenericRepository<Role>
     {
     }
 }
