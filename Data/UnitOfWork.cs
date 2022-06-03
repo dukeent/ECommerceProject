@@ -17,8 +17,6 @@ namespace ECommerceProject.Data
 
         public IReviewRepository Reviews { get; private set; }
 
-        public IRoleRepository Roles { get; private set; }
-
         public UnitOfWork(ECommerceProjectContext _dbContext)
         {
             dbContext = _dbContext;

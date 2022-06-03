@@ -10,7 +10,6 @@ namespace ECommerceProject.Interfaces.IConfiguration
         public IOrderRepository Orders { get; }
         public IOrderDetailRepository OrderDetails { get; }
         public IReviewRepository Reviews { get; }
-        public IRoleRepository Roles { get; }
 
         Task CompleteAsync();
     }
