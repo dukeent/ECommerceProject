@@ -40,15 +40,14 @@ namespace ECommerceProject.Repositories
 
         public async Task<T> GetById(int id)
         {
-            var entity = await dbSet.FindAsync(id);
-            if (entity != null)
-            {
-                return entity;
-            }
-            else
-            {
-                return null;
-            }
+            return await dbSet.FindAsync(id);
+        }
+
+        public T Update(T entity)
+        {
+            dbSet.Attach(entity);
+            dbContext.Entry(entity).State = EntityState.Modified;
+            return entity;
         }
     }
 }

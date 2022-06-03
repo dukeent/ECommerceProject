@@ -38,9 +38,24 @@ namespace ECommerceProject.Services
             return await unitOfWork.Products.GetAll();
         }
 
-        public Task<Product> GetById(int id)
+        public async Task<Product> GetById(int id)
         {
-            throw new NotImplementedException();
+            return await unitOfWork.Products.GetById(id);
+        }
+
+        public async Task<bool> Update(int id, Product entity)
+        {
+            //var existed = await unitOfWork.Products.CheckExisted(id);
+            //if (existed == true)
+            //{
+            //    unitOfWork.Products.Update(entity);
+            //    await unitOfWork.CompleteAsync();
+            //    return true;
+            //}
+            //return false;
+            unitOfWork.Products.Update(entity);
+            await unitOfWork.CompleteAsync();
+            return true;
         }
     }
 }

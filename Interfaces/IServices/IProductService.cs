@@ -9,5 +9,6 @@ namespace ECommerceProject.Interfaces.IServices
         Task<Product> GetById(int id);
         Task<bool> Add(Product entity);
         Task<bool> Delete(int id);
+        Task<bool> Update(int id, Product entity);
     }
 }

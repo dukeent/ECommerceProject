@@ -8,5 +8,6 @@
         Task<bool> Add(T entity);
         Task<bool> Delete(int id);
 
+        T Update(T entity);
     }
 }
