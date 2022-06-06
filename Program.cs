@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ECommerceProject.Interfaces.IConfiguration;
-using ECommerceProject.Interfaces.IRepositories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ECommerceProjectContext>(options =>
