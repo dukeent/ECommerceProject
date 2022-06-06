@@ -1,4 +1,7 @@
-﻿namespace ECommerceProject.Interfaces.IConfiguration
+﻿using ECommerceProject.Interfaces.IRepositories;
+using ECommerceProject.Models;
+
+namespace ECommerceProject.Interfaces.IConfiguration
 {
     public interface IUnitOfWork
     {

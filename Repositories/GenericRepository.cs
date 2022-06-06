@@ -1,11 +1,12 @@
-﻿using ECommerceProject.Interfaces.IReponsitories;
+using ECommerceProject.Interfaces.IReponsitories;
 using ECommerceProject.Models;
+using ECommerceProject.Data;
+
 
 namespace ECommerceProject.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
-
         protected ECommerceProjectContext dbContext;
         protected DbSet<T> dbSet;
         public GenericRepository(ECommerceProjectContext _dbContext)
@@ -22,7 +23,6 @@ namespace ECommerceProject.Repositories
             }
             return false;
         }
-
 
         public async Task<bool> Delete(int id)
         {
@@ -54,3 +54,4 @@ namespace ECommerceProject.Repositories
         }
     }
 }
+

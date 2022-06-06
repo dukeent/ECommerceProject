@@ -12,7 +12,6 @@ using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.IdentityModel.Tokens;
 using System.Text;
 using ECommerceProject.Interfaces.IConfiguration;
-
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ECommerceProjectContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("ECommerceProjectContext") ?? throw new InvalidOperationException("Connection string 'ECommerceProjectContext' not found.")));
@@ -24,7 +23,6 @@ builder.Services.AddControllers();
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen();
-
 var key = "this is my custom Secret key for authentication";
 builder.Services.AddAuthentication(x =>
 {
@@ -71,6 +69,9 @@ builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAdminProductRepository, AdminProductRepository>();
 builder.Services.AddScoped<IAdminProductService, AdminProductService>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+builder.Services.AddScoped<IProductService, ProductService>();
+builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

@@ -1,4 +1,4 @@
-﻿using ECommerceProject.Data;
+using ECommerceProject.Data;
 using ECommerceProject.Interfaces.IConfiguration;
 using ECommerceProject.Interfaces.IReponsitories;
 using ECommerceProject.Interfaces.IServices;
@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceProject.Services
 {
-    public class UserService : IUserService
+    public class UserService
     {
         IUnitOfWork unitOfWork;
         IUserRepository userRepository;
@@ -51,7 +51,5 @@ namespace ECommerceProject.Services
         {
             throw new NotImplementedException();
         }
-
-
     }
 }

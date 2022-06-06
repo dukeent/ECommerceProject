@@ -1,4 +1,8 @@
-﻿using ECommerceProject.Models;
+using ECommerceProject.Models;
+using ECommerceProject.Data;
+using ECommerceProject.Interfaces.IRepositories;
+
+
 
 namespace ECommerceProject.Repositories
 {
@@ -9,3 +13,4 @@ namespace ECommerceProject.Repositories
         }
     }
 }
+
