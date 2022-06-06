@@ -1,4 +1,6 @@
-﻿namespace ECommerceProject.Interfaces.IConfiguration
+﻿using ECommerceProject.Interfaces.IRepositories;
+
+namespace ECommerceProject.Interfaces.IConfiguration
 {
     public interface IUnitOfWork
     {
@@ -7,7 +9,6 @@
         public IOrderRepository Orders { get; }
         public IOrderDetailRepository OrderDetails { get; }
         public IReviewRepository Reviews { get; }
-        public IRoleRepository Roles { get; }
         public IAdminProductRepository AdminProducts { get; }
         Task CompleteAsync();
     }
