@@ -11,8 +11,6 @@ namespace ECommerceProject.Repositories
         public UserRepository(ECommerceProjectContext _dbContext) : base(_dbContext)
         {
         }
-
-
         Task<IEnumerable<User>> IUserRepository.GetAll()
         {
             return base.GetAll();
@@ -34,7 +32,7 @@ namespace ECommerceProject.Repositories
 
         Task<bool> IUserRepository.PutUser(int id, User user)
         {
-            throw new NotImplementedException();
+            return base.UpdateByID(id, user);
         }
         async Task<User> IUserRepository.GetUserByUsernameAndPassword(string username, string password)
         {

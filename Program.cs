@@ -8,11 +8,11 @@ global using ECommerceProject.Interfaces.IServices;
 global using ECommerceProject.Repositories;
 global using ECommerceProject.Services;
 global using ECommerceProject.Interfaces;
-using Microsoft.AspNetCore.Authentication.JwtBearer;
-using Microsoft.IdentityModel.Tokens;
-using System.Text;
-using ECommerceProject.Interfaces.IConfiguration;
-using ECommerceProject.Interfaces.IReponsitories;
+global using Microsoft.AspNetCore.Authentication.JwtBearer;
+global using Microsoft.IdentityModel.Tokens;
+global using System.Text;
+global using ECommerceProject.Interfaces.IConfiguration;
+global using ECommerceProject.Interfaces.IReponsitories;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddDbContext<ECommerceProjectContext>(options =>
@@ -43,6 +43,7 @@ builder.Services.AddAuthentication(x =>
         ValidateAudience = false
     };
 });
+
 builder.Services.AddSwaggerGen(options => {
     options.AddSecurityDefinition("Bearer", new Microsoft.OpenApi.Models.OpenApiSecurityScheme
     {
@@ -66,12 +67,14 @@ builder.Services.AddSwaggerGen(options => {
     });
 });
 builder.Services.AddSingleton<IAuthenticationService>(new Authentication(key));
+
 builder.Services.AddScoped<IUnitOfWork, UnitOfWork>();
 builder.Services.AddScoped<IUserRepository, UserRepository>();
 builder.Services.AddScoped<IUserService, UserService>();
 builder.Services.AddScoped<IAdminProductService, AdminProductService>();
 builder.Services.AddScoped<IAdminProductRepository, AdminProductRepository>();
 builder.Services.AddScoped<IProductRepository, ProductRepository>();
+
 var app = builder.Build();
 
 // Configure the HTTP request pipeline.

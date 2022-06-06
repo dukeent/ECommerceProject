@@ -51,6 +51,19 @@ namespace ECommerceProject.Repositories
                 return null;
             }
         }
+        public async Task<bool> UpdateByID(int id, T t)
+        {
+            var entity = await dbSet.FindAsync(id);
+            if (entity == null)
+            {
+                return false;
+            }
+            dbContext.Entry(entity).State = EntityState.Modified; 
+            await dbContext.SaveChangesAsync();         
+            return true;
+        }
+
+
     }
 }
 
