@@ -1,7 +1,5 @@
 ﻿using ECommerceProject.Interfaces.IReponsitories;
 using ECommerceProject.Models;
-
-
 namespace ECommerceProject.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
