@@ -10,5 +10,6 @@ namespace ECommerceProject.Interfaces.IServices
         public Task<bool> PostUser(User user);
         public Task<bool> DeleteUser(int id);
         public Task<bool> PutUser(int id, User user);
+        public Task<User> GetUserByUsernameAndPassword(string username, string password);
     }
 }

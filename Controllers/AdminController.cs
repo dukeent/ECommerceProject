@@ -20,6 +20,7 @@ namespace ECommerceProject.Controllers
         }
 
         [HttpGet]
+        [Authorize]
         [Route("Get All User")]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
@@ -67,6 +68,9 @@ namespace ECommerceProject.Controllers
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
             var res = await AdminProductService.GetAll();
+            if(res == null){
+                return NoContent();
+            }
             return Ok(res);
         }
 
@@ -75,8 +79,8 @@ namespace ECommerceProject.Controllers
         //[Route("Get Product by ID")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var user = await AdminProductService.GetById(id);
-            return Ok(user);
+            var product = await AdminProductService.GetById(id);
+            return Ok(product);
         }
 
 

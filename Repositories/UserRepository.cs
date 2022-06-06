@@ -35,6 +35,10 @@ namespace ECommerceProject.Repositories
         {
             throw new NotImplementedException();
         }
-
+        async Task<User> IUserRepository.GetUserByUsernameAndPassword(string username, string password)
+        {
+            return await base.dbContext.User.FirstOrDefaultAsync<User>(x => x.Username == username && x.Password == password);
+        }
+        
     }
 }

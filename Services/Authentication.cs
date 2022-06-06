@@ -1,4 +1,5 @@
 ﻿
+using ECommerceProject.Interfaces.IConfiguration;
 using ECommerceProject.Models;
 using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
@@ -9,26 +10,15 @@ namespace ECommerceProject.Services
 {
     public class Authentication : IAuthenticationService
     {
-        private readonly IUserRepository _userReponsitory;
-
-        //private readonly IEnumerable<User> users = _userReponsitory.GetUser();
-
-        private readonly Dictionary<string, string> user = new Dictionary<string, string>
-        {
-            {"Test1", "password1"},
-            {"admin", "123456" }
-        };
         private readonly String key;
-        public Authentication(String key)
+
+        public Authentication(string key)
         {
             this.key = key;
         }
-        public string Authenticate(string username, string password)
+
+        public string Authenticate(string username, int roleID)
         {
-            if(!user.Any(u => u.Key == username && u.Value == password))
-            {
-                return null;
-            }
             var tokenHandler = new JwtSecurityTokenHandler();
             var tokenKey = Encoding.ASCII.GetBytes(key);
             var tokenDescriptor = new SecurityTokenDescriptor
@@ -36,6 +26,7 @@ namespace ECommerceProject.Services
                 Subject = new ClaimsIdentity(new Claim[]
                 {
                     new Claim(ClaimTypes.Name, username),
+                    new Claim(ClaimTypes.Role, roleID.ToString()),
                 }),
                 Expires = DateTime.UtcNow.AddHours(2),
                 SigningCredentials = new SigningCredentials(
