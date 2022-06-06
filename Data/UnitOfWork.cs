@@ -19,10 +19,14 @@ namespace ECommerceProject.Data
 
         public IRoleRepository Roles { get; private set; }
 
-        public UnitOfWork(ECommerceProjectContext _dbContext)
+        public IAdminProductRepository AdminProducts { get; private set; }
+
+        public UnitOfWork(ECommerceProjectContext DbContext)
         {
-            dbContext = _dbContext;
+            dbContext = DbContext;
             Products = new ProductRepository(dbContext);
+            Users = new UserRepository(dbContext);
+            AdminProducts = new AdminProductRepository(dbContext);
         }
 
         public async Task CompleteAsync()

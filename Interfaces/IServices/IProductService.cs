@@ -1,13 +1,17 @@
-﻿using ECommerceProject.Models;
+using ECommerceProject.Models;
 
 namespace ECommerceProject.Interfaces.IServices
 {
     public interface IProductService
     {
-        Task<IEnumerable<Product>> GetAll();
-
+        public Task<IEnumerable<Product>> GetAll();
+        public Task<Product> GetById(int id);
+        public Task<bool> PostUser(Product product);
+        public Task<bool> DeleteUser(int id);
+        public Task<bool> PutUser(int id, Product product);
         Task<Product> GetById(int id);
         Task<bool> Add(Product entity);
         Task<bool> Delete(int id);
+
     }
 }
