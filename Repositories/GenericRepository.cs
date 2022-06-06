@@ -1,11 +1,15 @@
 ﻿using ECommerceProject.Interfaces.IReponsitories;
 using ECommerceProject.Models;
 
+
 namespace ECommerceProject.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+<<<<<<<<< Temporary merge branch 1
+=========
 
+>>>>>>>>> Temporary merge branch 2
         protected ECommerceProjectContext dbContext;
         protected DbSet<T> dbSet;
         public GenericRepository(ECommerceProjectContext _dbContext)
@@ -23,7 +27,10 @@ namespace ECommerceProject.Repositories
             return false;
         }
 
-       
+<<<<<<<<< Temporary merge branch 1
+=========
+
+>>>>>>>>> Temporary merge branch 2
         public async Task<bool> Delete(int id)
         {
             var entity = await dbSet.FindAsync(id);
@@ -53,6 +60,9 @@ namespace ECommerceProject.Repositories
                 return null;
             }
         }
-
     }
+<<<<<<<<< Temporary merge branch 1
 }
+=========
+}
+>>>>>>>>> Temporary merge branch 2

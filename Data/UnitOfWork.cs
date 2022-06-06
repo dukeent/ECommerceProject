@@ -1,4 +1,6 @@
 ﻿using ECommerceProject.Interfaces.IConfiguration;
+using ECommerceProject.Interfaces.IRepositories;
+using ECommerceProject.Repositories;
 
 namespace ECommerceProject.Data
 {

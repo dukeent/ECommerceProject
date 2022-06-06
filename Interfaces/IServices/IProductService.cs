@@ -1,4 +1,4 @@
-﻿using ECommerceProject.Models;
+using ECommerceProject.Models;
 
 namespace ECommerceProject.Interfaces.IServices
 {
