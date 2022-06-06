@@ -7,7 +7,7 @@ namespace ECommerceProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize(Roles = "1")]
     public class AdminController : ControllerBase
     {
         private readonly IUserService UserService;
@@ -20,7 +20,6 @@ namespace ECommerceProject.Controllers
         }
 
         [HttpGet]
-        [Authorize]
         [Route("Get All User")]
         public async Task<ActionResult<IEnumerable<User>>> GetUser()
         {
