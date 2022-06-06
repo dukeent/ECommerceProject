@@ -5,11 +5,11 @@ namespace ECommerceProject.Interfaces.IServices
 {
     public interface IUserService
     {
-        Task<ActionResult<IEnumerable<User>>> GetUser();
-        Task<ActionResult<User>> GetUser(int id);
-        void PutUser(int id, User user);
-        void PostUser(User user);
-        Task DeleteUser(int id);
-
+        public Task<IEnumerable<User>> GetAll();
+        public Task<User> GetById(int id);
+        public Task<bool> PostUser(User user);
+        public Task<bool> DeleteUser(int id);
+        public Task<bool> PutUser(int id, User user);
+        public Task<User> GetUserByUsernameAndPassword(string username, string password);
     }
 }

@@ -1,10 +1,10 @@
-﻿using ECommerceProject.Data;
-using ECommerceProject.Interfaces.IRepositories;
-
+﻿using ECommerceProject.Interfaces.IReponsitories;
+using ECommerceProject.Models;
 namespace ECommerceProject.Repositories
 {
     public class GenericRepository<T> : IGenericRepository<T> where T : class
     {
+
         protected ECommerceProjectContext dbContext;
         protected DbSet<T> dbSet;
         public GenericRepository(ECommerceProjectContext _dbContext)
@@ -35,7 +35,8 @@ namespace ECommerceProject.Repositories
 
         public async Task<IEnumerable<T>> GetAll()
         {
-            return await dbSet.ToListAsync();
+              return await dbSet.ToListAsync();
+
         }
 
         public async Task<T> GetById(int id)
@@ -51,3 +52,4 @@ namespace ECommerceProject.Repositories
         }
     }
 }
+
