@@ -1,4 +1,5 @@
 ﻿using ECommerceProject.Interfaces.IConfiguration;
+using ECommerceProject.Interfaces.IReponsitories;
 using ECommerceProject.Models;
 
 namespace ECommerceProject.Services
@@ -15,58 +16,77 @@ namespace ECommerceProject.Services
         }
         public async Task<bool> DeleteProduct(int id)
         {
-            //if (unitOfWork.AdminProducts == null)
-            //{
-            //    throw new Exception("List Product is empty");
-            //}
-            //var product = await unitOfWork.AdminProducts.GetById(id);
+            try
+            {
+                if (unitOfWork.AdminProducts == null)
+                {
+                    throw new Exception("List Product is empty");
+                }
+                var product = await unitOfWork.AdminProducts.GetById(id);
 
-            //if (product == null)
-            //{
-            //    throw new Exception("Product not found");
-            //}
-            await unitOfWork.AdminProducts.DeleteProduct(id);
-            await unitOfWork.CompleteAsync();
-            return true;
+                if (product == null)
+                {
+                    throw new Exception("Product not found");
+                }
+                await unitOfWork.AdminProducts.DeleteProduct(id);
+                await unitOfWork.CompleteAsync();
+                return true;
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<IEnumerable<Product>> GetAll()
         {
-            if (unitOfWork.AdminProducts == null)
-            {
-                throw new Exception("List Product is empty");
-            }
-            return await unitOfWork.AdminProducts.GetAll();
+
+                return await unitOfWork.AdminProducts.GetAll();
+
         }
 
         public async Task<Product> GetById(int id)
         {
-            //if (unitOfWork.AdminProducts == null)
-            //{
-            //    throw new Exception("List Product is empty");
-            //}
-            //var product = await unitOfWork.AdminProducts.GetById(id);
+            try
+            {
+                if (unitOfWork.AdminProducts == null)
+                {
+                    throw new Exception("List Product is empty");
+                }
+                var product = await unitOfWork.AdminProducts.GetById(id);
 
-            //if (product == null)
-            //{
-            //    throw new Exception("Product not found");
-            //}
+                if (product == null)
+                {
+                    throw new Exception("Product not found");
+                }
 
-            return await unitOfWork.AdminProducts.GetById(id);
+                return await unitOfWork.AdminProducts.GetById(id);
+            }
+            catch
+            {
+                throw;
+            }
         }
 
         public async Task<bool> PostProduct(Product product)
         {
-            if (product != null)
+            try
             {
-                await unitOfWork.AdminProducts.PostProduct(product);
-                await unitOfWork.CompleteAsync();
-                return true;
+                if (product != null)
+                {
+                    await unitOfWork.AdminProducts.PostProduct(product);
+                    await unitOfWork.CompleteAsync();
+                    return true;
+                }
+                return false;
             }
-            return false;
+            catch
+            {
+                throw;
+            }
         }
 
-        public async Task<bool> PutProduct(int id, Product product)
+        public Task<bool> PutProduct(int id, Product product)
         {
             throw new NotImplementedException();
         }

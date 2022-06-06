@@ -7,7 +7,7 @@ namespace ECommerceProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    //[Authorize]
+    [Authorize(Roles = "1")]
     public class AdminController : ControllerBase
     {
         private readonly IUserService UserService;
@@ -67,6 +67,9 @@ namespace ECommerceProject.Controllers
         public async Task<ActionResult<IEnumerable<Product>>> GetProduct()
         {
             var res = await AdminProductService.GetAll();
+            if(res == null){
+                return NoContent();
+            }
             return Ok(res);
         }
 
@@ -75,8 +78,8 @@ namespace ECommerceProject.Controllers
         //[Route("Get Product by ID")]
         public async Task<ActionResult<Product>> GetProduct(int id)
         {
-            var user = await AdminProductService.GetById(id);
-            return Ok(user);
+            var product = await AdminProductService.GetById(id);
+            return Ok(product);
         }
 
 

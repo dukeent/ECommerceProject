@@ -1,4 +1,4 @@
-﻿namespace ECommerceProject.Interfaces.IRepositories
+﻿namespace ECommerceProject.Interfaces.IReponsitories
 {
     public interface IOrderRepository
     {

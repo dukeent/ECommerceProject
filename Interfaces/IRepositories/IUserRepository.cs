@@ -1,15 +1,14 @@
 ﻿using ECommerceProject.Models;
-using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceProject.Interfaces.IRepositories
 {
     public interface IUserRepository
     {
-        Task<ActionResult<IEnumerable<User>>> GetUser();
-        Task<ActionResult<User>> GetUser(int id);
-        void PutUser(int id, User user);
-        void PostUser(User user);
-        void DeleteUser(int id);
-
+        Task<IEnumerable<User>> GetAll();
+        Task<User> GetById(int id);
+        Task<bool> PostUser(User user);
+        Task<bool> DeleteUser(int id);
+        Task<bool>  PutUser(int id, User user);
+        Task<User> GetUserByUsernameAndPassword(string username, string password);
     }
 }

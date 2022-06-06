@@ -1,5 +1,4 @@
-﻿using ECommerceProject.Interfaces.IRepositories;
-using ECommerceProject.Models;
+﻿using ECommerceProject.Interfaces.IReponsitories;
 
 namespace ECommerceProject.Interfaces.IConfiguration
 {

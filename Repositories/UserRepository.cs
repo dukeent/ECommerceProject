@@ -1,5 +1,6 @@
 using ECommerceProject.Data;
 using ECommerceProject.Interfaces.IReponsitories;
+using ECommerceProject.Interfaces.IRepositories;
 using ECommerceProject.Models;
 using Microsoft.AspNetCore.Mvc;
 
@@ -35,5 +36,15 @@ namespace ECommerceProject.Repositories
         {
             throw new NotImplementedException();
         }
-
+        async Task<User> IUserRepository.GetUserByUsernameAndPassword(string username, string password)
+        {
+            var user = await base.dbContext.User.FirstOrDefaultAsync<User>(x => x.Username == username && x.Password == password);
+            if (user == null)
+            {
+                return null;
+            }
+            return user;
+        }
+        
+    }
 }

@@ -1,9 +1,6 @@
-﻿using ECommerceProject.Interfaces.IRepositories;
-using ECommerceProject.Models;
-
-namespace ECommerceProject.Interfaces.IRepositories
+﻿namespace ECommerceProject.Interfaces.IReponsitories
 {
-    public interface IProductRepository : IGenericRepository<Product>
+    public interface IProductRepository
     {
     }
 }
