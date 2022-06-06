@@ -8,7 +8,7 @@ namespace ECommerceProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
-    [Authorize]
+
     public class LoginController : ControllerBase
     {
         private readonly IAuthenticationService authenticationService;
@@ -46,14 +46,11 @@ namespace ECommerceProject.Controllers
         }
 
         [HttpGet("Get User")]
+        [Authorize (Roles = "1")]
         public async Task<User> GetUser(String username, String password)
         {
             return await userService.GetUserByUsernameAndPassword(username, password);
         }
-
-
-
-
         
     }
 }

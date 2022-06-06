@@ -3,7 +3,7 @@ global using System.ComponentModel.DataAnnotations.Schema;
 global using Microsoft.EntityFrameworkCore;
 global using Microsoft.Extensions.DependencyInjection;
 global using ECommerceProject.Data;
-global using ECommerceProject.Interfaces.IReponsitories;
+global using ECommerceProject.Interfaces.IRepositories;
 global using ECommerceProject.Interfaces.IServices;
 global using ECommerceProject.Repositories;
 global using ECommerceProject.Services;
