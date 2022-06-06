@@ -18,6 +18,7 @@ namespace ECommerceProject.Data
             dbContext = _dbContext;
             Users = new UserRepository(dbContext);
             AdminProducts = new AdminProductRepository(dbContext);
+            Products = new ProductRepository(dbContext);
         }
 
         public async Task CompleteAsync()
