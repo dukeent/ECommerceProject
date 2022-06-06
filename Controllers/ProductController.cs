@@ -1,5 +1,6 @@
 ﻿using ECommerceProject.Interfaces.IServices;
 using ECommerceProject.Models;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 
@@ -7,6 +8,7 @@ namespace ECommerceProject.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]
+    [Authorize(Roles = "2")]
     public class ProductController : ControllerBase
     {
         private readonly IProductService productService;
