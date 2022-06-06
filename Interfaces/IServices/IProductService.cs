@@ -9,9 +9,5 @@ namespace ECommerceProject.Interfaces.IServices
         public Task<bool> PostUser(Product product);
         public Task<bool> DeleteUser(int id);
         public Task<bool> PutUser(int id, Product product);
-        Task<Product> GetById(int id);
-        Task<bool> Add(Product entity);
-        Task<bool> Delete(int id);
-
     }
 }

@@ -8,7 +8,7 @@ using Microsoft.AspNetCore.Mvc;
 
 namespace ECommerceProject.Services
 {
-    public class UserService
+    public class UserService : IUserService
     {
         IUnitOfWork unitOfWork;
         IUserRepository userRepository;
@@ -51,5 +51,10 @@ namespace ECommerceProject.Services
         {
             throw new NotImplementedException();
         }
+        public async Task<User> GetUserByUsernameAndPassword(string username, string password)
+        {
+            return await unitOfWork.Users.GetUserByUsernameAndPassword(username, password);
+        }
+
     }
 }

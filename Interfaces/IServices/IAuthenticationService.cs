@@ -1,8 +1,10 @@
-﻿namespace ECommerceProject.Interfaces
+﻿using ECommerceProject.Models;
+
+namespace ECommerceProject.Interfaces
 {
     public interface IAuthenticationService
     {
-        String Authenticate(String username, String password);
+        String Authenticate(string username, int roleID);
 
     }
 }
