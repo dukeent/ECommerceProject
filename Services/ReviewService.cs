@@ -4,7 +4,7 @@ using ECommerceProject.Models;
 
 namespace ECommerceProject.Services
 {
-    public class ReviewService
+    public class ReviewService : IReviewService
     {
         IUnitOfWork unitOfWork;
         IReviewRepository reviewRepository;
