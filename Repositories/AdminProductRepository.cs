@@ -1,4 +1,5 @@
-﻿using ECommerceProject.Interfaces.IRepositories;
+using ECommerceProject.Interfaces.IRepositories;
+
 using ECommerceProject.Models;
 
 namespace ECommerceProject.Repositories
@@ -31,7 +32,7 @@ namespace ECommerceProject.Repositories
 
         Task<bool> IAdminProductRepository.PutProduct(int id, Product product)
         {
-            throw new NotImplementedException();
+            return base.UpdateByID(id, product);
         }
     }
 }
