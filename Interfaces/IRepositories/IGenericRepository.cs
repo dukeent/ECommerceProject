@@ -1,4 +1,4 @@
-﻿namespace ECommerceProject.Interfaces.IReponsitories
+﻿namespace ECommerceProject.Interfaces.IRepositories
 {
     public interface IGenericRepository<T> where T : class
     {
@@ -8,5 +8,6 @@
         Task<bool> Add(T entity);
         Task<bool> Delete(int id);
 
+        T Update(T entity);
     }
 }

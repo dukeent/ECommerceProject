@@ -1,5 +1,5 @@
 ﻿using ECommerceProject.Models;
-namespace ECommerceProject.Interfaces.IReponsitories
+namespace ECommerceProject.Interfaces.IRepositories
 {
     public interface IAdminProductRepository
     {

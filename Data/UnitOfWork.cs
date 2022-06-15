@@ -1,5 +1,6 @@
 ﻿using ECommerceProject.Interfaces.IConfiguration;
-using ECommerceProject.Interfaces.IReponsitories;
+using ECommerceProject.Interfaces.IRepositories;
+
 namespace ECommerceProject.Data
 {
     public class UnitOfWork : IUnitOfWork, IDisposable
@@ -10,14 +11,14 @@ namespace ECommerceProject.Data
         public IOrderRepository Orders { get; private set; }
         public IOrderDetailRepository OrderDetails { get; private set; }
         public IReviewRepository Reviews { get; private set; }
-        public IRoleRepository Roles { get; private set; }
         public IAdminProductRepository AdminProducts { get; private set; }
 
-        public UnitOfWork(ECommerceProjectContext DbContext)
+        public UnitOfWork(ECommerceProjectContext _dbContext)
         {
-            dbContext = DbContext;
+            dbContext = _dbContext;
             Users = new UserRepository(dbContext);
             AdminProducts = new AdminProductRepository(dbContext);
+            Products = new ProductRepository(dbContext);
         }
 
         public async Task CompleteAsync()

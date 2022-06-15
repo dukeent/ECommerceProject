@@ -1,6 +1,8 @@
-﻿namespace ECommerceProject.Interfaces.IReponsitories
+﻿using ECommerceProject.Models;
+
+namespace ECommerceProject.Interfaces.IRepositories
 {
-    public interface IReviewRepository
+    public interface IReviewRepository : IGenericRepository<Review>
     {
     }
 }
